@@ -1,1 +1,16 @@
-xxx
+Spleeter项目github地址：https://github.com/deezer/spleeter
+
+Signal Separation:
+运行顺序：
+1. 先运行signal_generation。step1 2 3分三步运行，可以得到分割好的时频谱。
+    其中，mix的相位谱要保留下来。由于网络只对幅度谱进行操作，齿轮和轴承部分，保存幅度谱就行了。
+    其中，关于短时傅里叶变换的参数是我试出来的，不一定要用这组参数。
+
+2. Network是构建的网络，他是Spleeter团队构建出来的U-net的最简化的版本，
+    省略了很多激活函数的选择，但基本的骨架框架是一致的。
+
+3. 再运行Train，训练神经网络。每个网络练出来，只负责分离某一种特定的信号。
+
+4. 再运行Test，分离我们的信号。
+
+5. 最后运行show部分，画图检查成果。定量计算performance的部分我没有写，与去噪部分相同。
